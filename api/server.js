@@ -2,10 +2,13 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRouter from "./routes/userRoute.js";
+import authRouter from "./routes/authRoute.js";
 
 dotenv.config();
 
 const app = express();
+
+app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB;
@@ -24,3 +27,4 @@ mongoose
   });
 
 app.use("/api/user", userRouter);
+app.use("/api/auth", authRouter);
