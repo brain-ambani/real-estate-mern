@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({});
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -27,6 +26,11 @@ export default function SignUp() {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
+
+      // if (!res.ok) {
+      //   throw new Error(data.message);
+      // }
+
       if (data.success === false) {
         setLoading(false);
         setError(data.message);
@@ -34,7 +38,6 @@ export default function SignUp() {
       }
       setLoading(false);
       setError(null);
-      navigate("/sign-in");
     } catch (error) {
       setLoading(false);
       setError(error.message);
