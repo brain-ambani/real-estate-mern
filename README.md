@@ -1,8 +1,9 @@
 ## A mern stack project
+###### A real estate project with the crud operations.
 
 ### Frontend
 
-#### React
+##### React
 
 #### Tailwindcss
 
